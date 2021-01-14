@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1610625441 source:c:\users\akash\documents\1xbet_for_3odds\main.cpp
+	<iostream>
+	"be_header.h"
+	<bits/stdc++.h>
+
+1610623734 c:\users\akash\documents\1xbet_for_3odds\be_header.h
+	<bits/stdc++.h>
+
