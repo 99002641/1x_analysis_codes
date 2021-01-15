@@ -74,7 +74,7 @@ int main()
 
 void calculate(double N1, double N2,double N3, double r1, double r2,double r3)
 { double R1=0.00,R2=0.00,R3=0.00,diff=100000.00,tempAM1=0.00,tempAM2=0.00,tempAM3=0.00; int temp=0;
-int i,j,k;
+int i,j,k,flag=0;
     if(r1>0)
         temp+=r1;
     if(r2>0)
@@ -97,8 +97,9 @@ int i,j,k;
             R2=N2*k -temp;
             R3=N3*j -temp;
             //cout<<"\ntesting 2\\\\";
-            if((R1+r1)>0 && (R2+r2)>0 &&(R3+r3))
-            { if((abs((R1+r1)-(R2+r2))+abs((R2+r2)-(R3+r3))+abs((R3+r3)-(R1+r1))<diff))
+            if((R1+r1)>0 && (R2+r2)>0 &&(R3+r3)>0)
+            { flag=1;
+                if((abs((R1+r1)-(R2+r2))+abs((R2+r2)-(R3+r3))+abs((R3+r3)-(R1+r1))<diff))
                 {tempAM1=i; tempAM2=k;tempAM3=j;
                 diff=(abs((R1+r1)-(R2+r2))+abs((R2+r2)-(R3+r3))+abs((R3+r3)-(R1+r1)));}
              print_out(N1,N2,N3,r1,r2,r3,R1+r1,R2+r2,R3+r3,i,k,j);
@@ -106,12 +107,16 @@ int i,j,k;
             }
 
            }}
-   cout<<"\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
+    if(flag==1)
+   {cout<<"\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
 
     cout<<"\nBest possible(and safe) combination:\n";
-     print_out(N1,N2,N3,r1,r2,r3,tempAM1*N1-temp+r1,tempAM2*N2-temp+r2,tempAM3*N3-temp+r3,i,k,j);
+    cout<<"\n"<<tempAM1<<"\t"<<tempAM2<<"\t"<<tempAM3<<"\n";
+     print_out(N1,N2,N3,r1,r2,r3,tempAM1*N1-temp+r1,tempAM2*N2-temp+r2,tempAM3*N3-temp+r3,tempAM1,tempAM2,tempAM3);
      cout<<"\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
-
+}
+    if(flag==0)
+          cout<<"\n No possible combinations to get both side green:\n";
 
 
 
